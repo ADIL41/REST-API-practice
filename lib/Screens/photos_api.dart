@@ -38,7 +38,7 @@ class _PhotosApiState extends State<PhotosApi> {
       appBar: AppBar(
         title: Text('Photos API'),
         centerTitle: true,
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.purple,
       ),
       body: Column(
         children: [
@@ -49,14 +49,23 @@ class _PhotosApiState extends State<PhotosApi> {
                 return ListView.builder(
                   itemBuilder: (context, index) {
                     return ListTile(
-                      title: Text(snapshot.data![index].title.toString()),
+                      title: Text(
+                        snapshot.data![index].title.toString(),
+                        style: TextStyle(fontSize: 20, color: Colors.blue),
+                      ),
                       leading: CircleAvatar(
                         radius: 30,
                         backgroundImage: NetworkImage(
                           snapshot.data![index].url.toString(),
                         ),
                       ),
-                      subtitle: Text(snapshot.data![index].id.toString()),
+                      subtitle: Text(
+                        snapshot.data![index].id.toString(),
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     );
                   },
                   itemCount: photoslist.length,
