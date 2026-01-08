@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rest_api/home.dart';
+import 'package:rest_api/Screens/photos_api.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      home: const Home(),
+      home: const PhotosApi(),
     );
   }
 }
