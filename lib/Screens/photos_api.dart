@@ -23,6 +23,7 @@ class _PhotosApiState extends State<PhotosApi> {
           title: i['title'],
           url: i['url'],
           id: i['id'],
+          thumbnailUrl: i['thumbnailUrl'],
         );
         photoslist.add(photos);
       }
@@ -38,7 +39,7 @@ class _PhotosApiState extends State<PhotosApi> {
       appBar: AppBar(
         title: Text('Photos API'),
         centerTitle: true,
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.cyan,
       ),
       body: Column(
         children: [
@@ -48,22 +49,26 @@ class _PhotosApiState extends State<PhotosApi> {
               builder: (context, AsyncSnapshot<List<PhotosModel>> snapshot) {
                 return ListView.builder(
                   itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(
-                        snapshot.data![index].title.toString(),
-                        style: TextStyle(fontSize: 20, color: Colors.blue),
-                      ),
-                      leading: CircleAvatar(
-                        radius: 30,
-                        backgroundImage: NetworkImage(
-                          snapshot.data![index].url.toString(),
+                    return Card(
+                      color: Colors.brown,
+                      elevation: 4,
+                      child: ListTile(
+                        title: Text(
+                          snapshot.data![index].title.toString(),
+                          style: TextStyle(fontSize: 20, color: Colors.black),
                         ),
-                      ),
-                      subtitle: Text(
-                        snapshot.data![index].id.toString(),
-                        style: TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
+                        leading: CircleAvatar(
+                          radius: 30,
+                          backgroundImage: NetworkImage(
+                            snapshot.data![index].url.toString(),
+                          ),
+                        ),
+                        subtitle: Text(
+                          snapshot.data![index].id.toString(),
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     );
@@ -80,8 +85,13 @@ class _PhotosApiState extends State<PhotosApi> {
 }
 
 class PhotosModel {
-  String title, url;
+  String title, url, thumbnailUrl;
   int id;
 
-  PhotosModel({required this.title, required this.url, required this.id});
+  PhotosModel({
+    required this.title,
+    required this.url,
+    required this.id,
+    required this.thumbnailUrl,
+  });
 }
